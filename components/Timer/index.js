@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import Button from '../Button/index';
 
 export default class Timer extends React.Component {
     render(){
@@ -9,7 +10,8 @@ export default class Timer extends React.Component {
                     <Text style={styles.time}>25:00</Text>
              </View>
                 <View style={styles.lower}>
-                    <Text>Button Here</Text>
+                    <Button iconName="play-circle" onPress= { () => { alert('play 버튼 클릭됨') } } />
+                    <Button iconName="stop-circle" onPress= { () => { alert('pause 버튼 클릭됨') } } />
                 </View>
             </View>
         )
