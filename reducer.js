@@ -78,7 +78,7 @@ function applyAddSecond(state){
 }
 
 // Export Action Creators
-const actionCreators = {
+export const actionCreators = {
     startTimer,
     restartTimer,
     addSecond
