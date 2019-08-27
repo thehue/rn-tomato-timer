@@ -134,6 +134,20 @@ bindActionCreators(tomatoActions.startTimer, dispatch)
 <=> store.dispatch(tomatoActions.startTimer())
 ```
 
+### Adding seconds to the counter
+컴포넌트의 Lifecycle Method **ComponentWillReceiveProps(newProps)**
+
+컴포넌트가 새로운 prop을 받을때 불려진다. React는 props가 아직 변경되지 않았는데도 호출하므로 newPorps와 this.props을 확실하게 비교해야한다.
+
+```
+componentWillReceiveProps(newProps){
+        const beforeProps = this.props;
+        console.log(`플레이 버튼 누르기 전의 isPlaying: ${beforeProps.isPlaying}, 
+        스탑버튼 누른 후의 isPlaying: ${newProps.isPlaying}`);
+}
+```
+-> beforeProps에서는 변하기 전의 isPlaying 값이 반환되고 newProps의 isPlaying은 현재 state(바뀐 state)값이 반환된다.
+
 
 
 
