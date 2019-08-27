@@ -1,6 +1,12 @@
 # rn-tomato-timer
-React, Redux로 타이머 앱 만들기
+React, Redux로 타이머 앱 만들기(일시정지 버튼 추가)
+
+링크 : https://youtu.be/61t66d3cZHo
 ***
+## Screenshots
+![default](https://user-images.githubusercontent.com/45552388/63754671-3b0e2600-c8f0-11e9-9790-4689b11a1be6.png)
+![stop](https://user-images.githubusercontent.com/45552388/63754759-60029900-c8f0-11e9-93da-d8c31d6b4904.png)
+
 ## Redux Theory
 ### Redux란?
 - 리덕스는 리액트를 위한 state management 툴
