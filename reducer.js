@@ -4,6 +4,7 @@
 const START_TIMER = 'START_TIMER';
 const RESTART_TIMER = 'RESTART_TIMER';
 const ADD_SECOND = 'ADD_SECOND';
+const PAUSE_TIMER = 'PAUSE_TIMER';
 
 // Action Creators
 function startTimer() {
@@ -21,6 +22,12 @@ function restartTimer() {
 function addSecond() {
     return ({
         type: ADD_SECOND
+    });
+}
+
+function pauseTimer() {
+    return ({
+        type: PAUSE_TIMER
     });
 }
 
@@ -42,6 +49,8 @@ function reducer(state = initialState, action){
             return applyRestartTimer(state);
         case ADD_SECOND:
             return applyAddSecond(state);
+        case PAUSE_TIMER:
+            return applyPauseTimer(state);
         default :
         return state;
     }
@@ -72,16 +81,25 @@ function applyAddSecond(state){
     }else{
         return {
             ...state,
-            isPlaying: false
+            isPlaying: false,
+            elapsedTime: 0
         };
     }
+}
+
+function applyPauseTimer(state){
+   return({
+       ...state,
+      isPlaying: false
+   })
 }
 
 // Export Action Creators
 export const actionCreators = {
     startTimer,
     restartTimer,
-    addSecond
+    addSecond,
+    pauseTimer
 }
 
 // Export Reducer

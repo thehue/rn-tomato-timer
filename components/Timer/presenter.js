@@ -20,18 +20,32 @@ export default class Timer extends React.Component {
         }
     }
 
+    formatTime(seconds){
+        let minute = Math.floor(seconds / 60);
+        seconds -= minute * 60;
+        
+        return `${minute < 10 ? `0${minute}`: minute }:${seconds < 10 ? `0${seconds}`:seconds}`;
+    }
+
     render(){
-        const { isPlaying, elapsedTime, timeDuration, start, restart, addSecond } = this.props;
+        const { isPlaying, elapsedTime, timeDuration, start, restart, pause } = this.props;
         
         return(
 
             <View style={styles.container}>
                 <View style={styles.upper}>
-                    <Text style={styles.time}>25:00</Text>
-             </View>
+                    <Text style={styles.time}>{this.formatTime(timeDuration - elapsedTime)}</Text>
+                </View>
                 <View style={styles.lower}>
-                    { !isPlaying && <Button iconName="play-circle" onPress= { start } /> }
-                    { isPlaying && <Button iconName="stop-circle" onPress= { restart } /> }
+                { !isPlaying && <Button iconName="play-circle" onPress= { start } /> }
+                { isPlaying &&  <View style={styles.lower}>
+                                    <View style={{paddingRight: 30}}>
+                                        <Button style={styles.padding} iconName="stop-circle" onPress= { restart } /> 
+                                    </View>
+                                    <View>
+                                        <Button style={styles.padding} iconName="pause-circle" onPress= { pause } />
+                                    </View>
+                                </View> }
                 </View>
             </View>
         )
@@ -47,10 +61,10 @@ const styles = StyleSheet.create({
         flex: 2,
         justifyContent: 'center',
         alignItems: 'center'
-
     },
     lower: {
         flex: 1,
+        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center'
     },
